@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Bella Napoli</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff8f0;
+            color: #333;
+        }
+        header {
+            background-color: #d32f2f;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        nav {
+            background-color: #b71c1c;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0.8rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            background: url('pizza-hero.jpg') center/cover no-repeat;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            background: rgba(0,0,0,0.4);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+        }
+        section {
+            padding: 3rem 1.5rem;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .pizza {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .pizza img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #b71c1c;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pizzeria Bella Napoli</h1>
+        <p>La vera pizza italiana dal 1985 🍕</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#contatti">Contatti</a>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Benvenuti da Bella Napoli!</h1>
+    </section>
+
+    <section id="menu">
+        <h2>Il nostro menu</h2>
+        <div class="menu">
+            <div class="pizza">
+                <img src="margherita.jpg" alt="Pizza Margherita">
+                <h3>Margherita</h3>
+                <p>Pomodoro, mozzarella e basilico fresco.</p>
+                <p><strong>€7,00</strong></p>
+            </div>
+            <div class="pizza">
+                <img src="d
