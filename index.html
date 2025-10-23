@@ -1,110 +1,288 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Bella Napoli</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff8f0;
-            color: #333;
-        }
-        header {
-            background-color: #d32f2f;
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-        }
-        nav {
-            background-color: #b71c1c;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            padding: 0.8rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .hero {
-            background: url('pizza-hero.jpg') center/cover no-repeat;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-        }
-        .hero h1 {
-            font-size: 3rem;
-            background: rgba(0,0,0,0.4);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-        }
-        section {
-            padding: 3rem 1.5rem;
-            max-width: 1000px;
-            margin: auto;
-        }
-        .menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        .pizza {
-            background: white;
-            border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .pizza img {
-            width: 100%;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #b71c1c;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pizzeria Bella Napoli — Progetto Didattico</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Personalizzazioni colore e piccoli ritocchi -->
+  <style>
+    :root{
+      --cream: #f6efe6;      /* fondo panna/crema */
+      --dark-gray: #2b2b2b;  /* testo scuro */
+      --brick: #b83b2e;      /* rosso mattone */
+      --gold: #cfa56a;       /* oro tenue */
+    }
+
+    .bg-cream { background-color: var(--cream); }
+    .text-dark { color: var(--dark-gray); }
+    .bg-brick { background-color: var(--brick); }
+    .text-gold { color: var(--gold); }
+
+    /* Hero overlay for contrast */
+    .hero-overlay {
+      background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.28) 100%);
+    }
+
+    /* Card image consistent aspect */
+    .card-img {
+      object-fit: cover;
+      width: 100%;
+      height: 180px;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+
+    /* Fixed header slight backdrop */
+    header.backdrop {
+      background-color: rgba(246,239,230,0.90);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-cream text-dark antialiased">
 
-    <header>
-        <h1>Pizzeria Bella Napoli</h1>
-        <p>La vera pizza italiana dal 1985 🍕</p>
-    </header>
+  <!-- Header fisso -->
+  <header class="backdrop fixed inset-x-0 top-0 z-50 h-16 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-full">
+      <div class="flex items-center justify-between h-full">
+        <a href="#" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brick flex items-center justify-center text-white font-bold shadow">BN</div>
+          <span class="font-semibold text-lg">Pizzeria Bella Napoli</span>
+        </a>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#contatti">Contatti</a>
-    </nav>
+        <!-- Nav (collegamenti che richiamano le sezioni) -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#" data-action="home" class="hover:underline">Home</a>
+          <a href="#" data-action="pizze" class="hover:underline">Menù Pizze</a>
+          <a href="#" data-action="dolci" class="hover:underline">Menù Dolci</a>
+          <a href="#" data-action="bevande" class="hover:underline">Menù Bevande</a>
+        </nav>
 
-    <section id="home" class="hero">
-        <h1>Benvenuti da Bella Napoli!</h1>
+        <!-- Mobile simple menu -->
+        <div class="md:hidden">
+          <details>
+            <summary class="list-none cursor-pointer px-3 py-2 rounded-md bg-white/60 text-dark shadow-sm">Menu</summary>
+            <div class="mt-2 w-44 bg-white rounded-md shadow-lg p-2 text-sm">
+              <a href="#" data-action="home" class="block px-3 py-2 rounded hover:bg-gray-50">Home</a>
+              <a href="#" data-action="pizze" class="block px-3 py-2 rounded hover:bg-gray-50">Pizze</a>
+              <a href="#" data-action="dolci" class="block px-3 py-2 rounded hover:bg-gray-50">Dolci</a>
+              <a href="#" data-action="bevande" class="block px-3 py-2 rounded hover:bg-gray-50">Bevande</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20"> <!-- spazio per header fisso -->
+
+    <!-- HOME: hero + 3 pulsanti centrali -->
+    <section id="home" class="min-h-[80vh] flex flex-col items-center justify-center px-6">
+      <!-- Hero full-width: utilizza img/hero.jpg locale -->
+      <div class="relative w-full max-w-7xl rounded-lg overflow-hidden shadow-lg">
+        <div class="h-[62vh] md:h-[72vh] w-full bg-cover bg-center flex items-center justify-center"
+             style="background-image: url('img/hero.jpg');">
+          <div class="absolute inset-0 hero-overlay"></div>
+          <div class="relative z-10 text-center px-6 py-12">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight">Benvenuti alla<br class="hidden md:inline"> Pizzeria Bella Napoli</h1>
+            <p class="mt-3 text-sm md:text-base text-white/90 max-w-xl mx-auto">Ricette autentiche, ingredienti freschi e atmosfera familiare. Scopri il nostro menù.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pulsanti centrali -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center gap-4">
+        <button data-show="pizze" class="px-6 py-3 rounded-md bg-brick text-white font-semibold shadow hover:opacity-95">Menù Pizze</button>
+        <button data-show="dolci" class="px-6 py-3 rounded-md bg-white border border-gray-200 text-dark font-semibold shadow hover:bg-gray-50">Menù Dolci</button>
+        <button data-show="bevande" class="px-6 py-3 rounded-md bg-white border border-gray-200 text-dark font-semibold shadow hover:bg-gray-50">Menù Bevande</button>
+      </div>
     </section>
 
-    <section id="menu">
-        <h2>Il nostro menu</h2>
-        <div class="menu">
-            <div class="pizza">
-                <img src="margherita.jpg" alt="Pizza Margherita">
-                <h3>Margherita</h3>
-                <p>Pomodoro, mozzarella e basilico fresco.</p>
-                <p><strong>€7,00</strong></p>
+    <!-- SEZIONE: MENÙ PIZZE (sviluppatore Zottolo) -->
+    <section id="pizze" class="section-panel hidden max-w-7xl mx-auto px-6 md:px-8 py-12">
+      <!-- Intestazione sezione con bottone torna home -->
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold">Menù Pizze <span class="text-sm text-gray-500"> (sviluppatore Zottolo)</span></h2>
+          <p class="mt-2 text-sm text-gray-600">Selezione delle nostre pizze classiche, preparate con ingredienti di qualità.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button data-action="home" class="px-4 py-2 rounded-md bg-white border border-gray-200 text-dark font-medium shadow hover:bg-gray-50">Torna alla Home</button>
+        </div>
+      </div>
+
+      <!-- Griglia pizze -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Card: Margherita - utilizza img/margherita1.jpg locale -->
+        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+          <img class="card-img" src="img/margherita1.jpg" alt="Pizza Margherita">
+          <div class="p-5">
+            <div class="flex items-start justify-between">
+              <h3 class="text-lg font-semibold">Margherita</h3>
+              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€8.50</div>
             </div>
-            <div class="pizza">
-                <img src="d
+            <p class="mt-3 text-sm text-gray-600">Pomodoro San Marzano, mozzarella fior di latte, basilico fresco e olio extra vergine d'oliva.</p>
+            <div class="mt-4 flex items-center gap-3">
+              <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Vegetariana</span>
+              <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Forno a legna</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card: Diavola - utilizza img/diavola1.jpg locale -->
+        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+          <img class="card-img" src="img/diavola1.jpg" alt="Pizza Diavola">
+          <div class="p-5">
+            <div class="flex items-start justify-between">
+              <h3 class="text-lg font-semibold">Diavola</h3>
+              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€10.00</div>
+            </div>
+            <p class="mt-3 text-sm text-gray-600">Pomodoro, mozzarella, salame piccante, olive e un tocco di peperoncino per chi ama il piccante.</p>
+            <div class="mt-4 flex items-center gap-3">
+              <span class="text-xs px-2 py-1 rounded bg-red-50 text-red-700">Piccante</span>
+              <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Specialità</span>
+            </div>
+          </div>
+        </article>
+        <!-- Card: Capricciosa --> <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+           <img class="card-img" src="img/capricciosa1.jpg" alt="Pizza Capricciosa">
+            <div class="p-5">
+               <div class="flex items-start justify-between">
+                 <h3 class="text-lg font-semibold">Capricciosa</h3>
+                  <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€11.00</div>
+                 </div>
+                  <p class="mt-3 text-sm text-gray-600">Pomodoro, mozzarella, prosciutto cotto, funghi, carciofi e olive — un classico ricco e saporito.</p>
+                   <div class="mt-4 flex items-center gap-3"> <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Tradizionale</span>
+                     <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Forno a legna</span>
+                     </div> 
+                    </div> 
+                  </article>
+                   <!-- Card: Primavera --> 
+                    <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+                       <img class="card-img" src="img/primavera1.jpeg" alt="Pizza Primavera"> <div class="p-5"> <div class="flex items-start justify-between">
+                         <h3 class="text-lg font-semibold">Primavera</h3>
+                    <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€10.50</div>
+                     </div>
+                   <p class="mt-3 text-sm text-gray-600">Base bianca con mozzarella e verdure di stagione grigliate, con un filo d'olio al basilico.</p>
+                 <div class="mt-4 flex items-center gap-3"> <span class="text-xs px-2 py-1 rounded bg-emerald-50 text-emerald-700">Leggera</span>
+               <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Vegetariana</span>
+             </div>
+           </div>
+          </article>
+      </div>
+    </section>
+
+    <!-- SEZIONE: MENÙ DOLCI (sviluppatore Conte) - segnaposto -->
+    <section id="dolci" class="section-panel hidden max-w-3xl mx-auto px-6 md:px-8 py-24 text-center">
+      <div class="bg-white rounded-lg p-8 shadow-sm">
+        <h2 class="text-2xl font-bold">Menù Dolci <span class="text-sm text-gray-500"> (sviluppatore Conte)</span></h2>
+        <p class="mt-4 text-gray-600">Area Dolci in sviluppo</p>
+        <div class="mt-6">
+          <button data-action="home" class="px-4 py-2 rounded-md bg-brick text-white font-medium shadow hover:opacity-95">Torna alla Home</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE: MENÙ BEVANDE (sviluppatore Lo Gatto) - segnaposto -->
+    <section id="bevande" class="section-panel hidden max-w-3xl mx-auto px-6 md:px-8 py-24 text-center">
+      <div class="bg-white rounded-lg p-8 shadow-sm">
+        <h2 class="text-2xl font-bold">Menù Bevande <span class="text-sm text-gray-500"> (sviluppatore Lo Gatto)</span></h2>
+        <p class="mt-4 text-gray-600">Area Bevande in sviluppo</p>
+        <div class="mt-6">
+          <button data-action="home" class="px-4 py-2 rounded-md bg-brick text-white font-medium shadow hover:opacity-95">Torna alla Home</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer elegante -->
+  <footer class="mt-12 bg-[#111] text-gray-100">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-brick flex items-center justify-center text-white font-semibold">BN</div>
+        <div>
+          <div class="font-semibold">Pizzeria Bella Napoli</div>
+          <div class="text-xs text-gray-300">Autentica cucina napoletana</div>
+        </div>
+      </div>
+
+      <div class="text-sm text-gray-300">Progetto didattico GitHub – Classe 5B, Gruppo Lo Gatto / Conte / Zottolo - Prof vi amiamo (:</div>
+
+    </div>
+  </footer>
+
+  <!-- JavaScript minimo per mostrare/nascondere le sezioni -->
+  <script>
+    /* 
+      Script: gestione visualizzazione sezioni.
+      - Bottoni con attributo data-show="sezioneId" mostrano la sezione corrispondente.
+      - Elementi con data-action="home" riportano alla home.
+      - Aggiunge/ rimuove la classe 'hidden' e imposta aria-hidden per accessibilità.
+    */
+
+    (function () {
+      const home = document.getElementById('home');
+      const panels = Array.from(document.querySelectorAll('.section-panel'));
+      const panelMap = {
+        pizze: document.getElementById('pizze'),
+        dolci: document.getElementById('dolci'),
+        bevande: document.getElementById('bevande')
+      };
+
+      // Mostra la home: nasconde tutte le panel
+      function showHome() {
+        home.classList.remove('hidden');
+        home.setAttribute('aria-hidden', 'false');
+        panels.forEach(p => { p.classList.add('hidden'); p.setAttribute('aria-hidden', 'true'); });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Mostra una sezione specifica, nasconde la home e le altre sezioni
+      function showPanel(id) {
+        if (!panelMap[id]) return;
+        home.classList.add('hidden');
+        home.setAttribute('aria-hidden', 'true');
+        panels.forEach(p => { p.classList.add('hidden'); p.setAttribute('aria-hidden', 'true'); });
+        const target = panelMap[id];
+        target.classList.remove('hidden');
+        target.setAttribute('aria-hidden', 'false');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Event listeners per i pulsanti centrali (data-show)
+      document.querySelectorAll('[data-show]').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const id = this.getAttribute('data-show');
+          showPanel(id);
+        });
+      });
+
+      // Event listeners per azioni (es. nav e bottoni "Torna alla Home")
+      document.querySelectorAll('[data-action]').forEach(el => {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          const action = this.getAttribute('data-action');
+          if (action === 'home') showHome();
+          else if (action in panelMap) showPanel(action);
+        });
+      });
+
+      // Rendiamo le sezioni aria-hidden inizialmente coerenti
+      home.setAttribute('aria-hidden', 'false');
+      panels.forEach(p => p.setAttribute('aria-hidden', 'true'));
+    })();
+  </script>
+
+  <noscript>
+    <div class="fixed bottom-4 right-4 bg-yellow-50 text-yellow-900 text-sm px-3 py-2 rounded shadow">JavaScript richiesto per la navigazione interna (mostra/nascondi sezioni).</div>
+  </noscript>
+
+</body>
+</html>
