@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Relazione sullo sviluppo collaborativo con GitHub</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Personalizzazioni colore e piccoli ritocchi -->
+  <style>
+    :root{
+      --cream: #f6efe6;
+      --dark-gray: #2b2b2b;
+      --brick: #b83b2e;
+      --gold: #cfa56a;
+    }
+    body {
+      background-color: var(--cream);
+      color: var(--dark-gray);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 5rem auto 3rem;
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 2.5rem 3rem;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 2.75rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--brick);
+      user-select: none;
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 1.875rem;
+      border-bottom: 3px solid var(--brick);
+      padding-bottom: 0.4rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--brick);
+    }
+    h3 {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+      color: var(--dark-gray);
+    }
+    h4 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      color: var(--dark-gray);
+    }
+    p {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    a {
+      color: var(--brick);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #dcdcdc;
+      margin: 3rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0 2.5rem;
+      box-shadow: 0 4px 15px rgba(184, 59, 46, 0.15);
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+    table thead {
+      background-color: var(--brick);
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    table th, table td {
+      padding: 12px 16px;
+      border: 1px solid var(--brick);
+      background-color: white;
+      text-align: left;
+    }
+    code {
+      background-color: #f3f4f6;
+      padding: 3px 7px;
+      border-radius: 0.4rem;
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-weight: 600;
+      color: var(--dark-gray);
+      font-size: 1rem;
+    }
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-weight: 600;
+      color: var(--dark-gray);
+      box-shadow: 0 4px 15px rgba(184, 59, 46, 0.15);
+      margin: 1.5rem 0;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      user-select: none;
+    }
+    .nav-buttons button {
+      background-color: var(--brick);
+      border: none;
+      color: white;
+      padding: 0.6rem 1.6rem;
+      border-radius: 9999px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(184, 59, 46, 0.6);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-buttons button:hover:not(:disabled) {
+      background-color: #92271f;
+      transform: scale(1.1);
+    }
+    .nav-buttons button:disabled {
+      background-color: #d9d9d9;
+      cursor: default;
+      box-shadow: none;
+      color: #777;
+      transform: none;
+    }
+    section {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+    section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @media (max-width: 640px) {
+      .container {
+        margin: 3rem 1rem 2rem;
+        padding: 2rem 1.5rem;
+        width: auto;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      p, ul, ol {
+        font-size: 1rem;
+      }
+    }
+
+    #page-9::before {
+      content: "";
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      height: 250px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    #page-9 > * {
+      position: relative;
+      z-index: 1;
+    }
+    #page-9 h2 {
+      font-family: 'Georgia', serif;
+      font-weight: 700;
+      color: #5a3a1a;
+      margin-bottom: 1rem;
+    }
+    #page-9 p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #5a3a1a;
+    }
+    .nav-buttons {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .nav-buttons button {
+      background-color: #d2691e; /* warm brown-orange from the logo */
+      color: #fff1d0; /* cream color from the logo */
+      border: none;
+      padding: 0.6rem 1.2rem;
+      margin: 0 0.5rem;
+      font-family: 'Georgia', serif;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .nav-buttons button:disabled {
+      background-color: #a0522d;
+      cursor: default;
+    }
+    .nav-buttons button:not(:disabled):hover {
+      background-color: #8b4513;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>Relazione sullo sviluppo collaborativo con GitHub</h1>
+
+    <section id="page-1" class="active" aria-label="Cos’è GitHub">
+      <h2>Cos’è GitHub</h2>
+      <p><strong>GitHub</strong> è una piattaforma online (<a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>) che serve principalmente per <strong>ospitare, condividere e collaborare su progetti di software</strong>. È uno strumento fondamentale nel mondo della programmazione moderna perché permette a più persone di lavorare contemporaneamente sullo stesso progetto, anche da luoghi diversi.</p>
+    </section>
+
+    <hr />
+
+    <section id="page-2" aria-label="Cos’è in pratica">
+      <h2>Cos’è in pratica</h2>
+      <p>GitHub è basato su <strong>Git</strong>, un sistema di controllo di versione creato da <strong>Linus Torvalds</strong> (lo stesso che ha sviluppato Linux). Git tiene traccia di <strong>tutte le modifiche</strong> fatte ai file di un progetto, permettendo di:</p>
+      <ul>
+        <li>Tornare a versioni precedenti del codice</li>
+        <li>Confrontare modifiche</li>
+        <li>Lavorare in gruppo senza rischiare di sovrascrivere il lavoro altrui</li>
+      </ul>
+      <p>In sostanza, GitHub unisce le funzioni di Git a un’interfaccia web semplice e collaborativa, rendendo il lavoro di gruppo più organizzato e trasparente.</p>
+    </section>
+
+    <hr />
+
+    <section id="page-3" aria-label="Cosa puoi fare su GitHub">
+      <h2>Cosa puoi fare su GitHub</h2>
+      <ul>
+        <li><strong>Salvare codice online</strong> in un <em>repository</em> (una cartella del progetto)</li>
+        <li><strong>Collaborare</strong> con altre persone, integrando e revisionando il loro codice (<em>pull requests</em>, <em>issues</em>)</li>
+        <li><strong>Gestire versioni</strong> del progetto con Git</li>
+        <li><strong>Creare siti web statici</strong> con <em>GitHub Pages</em></li>
+        <li><strong>Usare GitHub Actions</strong> per automatizzare processi come test, aggiornamenti e pubblicazioni</li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <section id="page-4" aria-label="Come funziona GitHub">
+      <h2> Come funziona GitHub</h2>
+
+      <h3>1. Git + GitHub: la coppia base</h3>
+      <ul>
+        <li><strong>Git</strong> è il programma che tiene traccia delle modifiche ai file sul tuo computer.</li>
+        <li><strong>GitHub</strong> è il sito dove puoi <strong>caricare online</strong> i tuoi progetti Git per condividerli o collaborare con altri.</li>
+      </ul>
+
+      <h3>2. Come funziona in pratica (passaggi base)</h3>
+
+      <h4>Step 1: Crei un account su GitHub</h4>
+      <p>Vai su <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a> e ti registri gratuitamente. Puoi creare progetti pubblici (visibili a tutti) o privati (solo per il tuo gruppo).</p>
+
+      <h4>Step 2: Crei un repository</h4>
+      <p>Un <strong>repository</strong> (abbreviato “repo”) è una cartella che contiene tutto il progetto: codice, documenti, immagini, ecc. Puoi:</p>
+      <ul>
+        <li>Crearlo direttamente sul sito GitHub, oppure</li>
+        <li>Crearlo in locale con Git e poi caricarlo online.</li>
+      </ul>
+
+      <h4>Step 3: Fai modifiche e le “committi”</h4>
+      <p>Ogni volta che modifichi un file:</p>
+      <ol>
+        <li><code>git add</code> → prepari i file da salvare</li>
+        <li><code>git commit</code> → registri la modifica con un messaggio</li>
+        <li><code>git push</code> → invii tutto su GitHub</li>
+      </ol>
+
+      <h4>Step 4: Collabori</h4>
+      <p>Altri membri del team possono:</p>
+      <ul>
+        <li><strong>Clonare</strong> il progetto</li>
+        <li>Fare modifiche</li>
+        <li>Inviare una <strong>pull request</strong> (una proposta di aggiornamento). Il responsabile del progetto può poi esaminarla e approvarla.</li>
+      </ul>
+
+      <h4>Step 5: Gestisci problemi o miglioramenti</h4>
+      <p>Si possono aprire <strong>issue</strong> per segnalare problemi o idee, organizzare <strong>milestone</strong> per obiettivi e creare <strong>rami (branches)</strong> per sviluppare nuove funzioni senza modificare il codice principale.</p>
+    </section>
+
+    <hr />
+
+    <section id="page-5" aria-label="Come abbiamo suddiviso il lavoro">
+      <h2>Come abbiamo suddiviso il lavoro</h2>
+      <p>Dopo che il professore ha formato i gruppi e ci ha spiegato il funzionamento di GitHub, abbiamo deciso di realizzare <strong>il menù della nostra pizzeria</strong>.</p>
+
+      <p>Il nostro team era formato da:</p>
+      <ul>
+        <li><strong>Carmine Conte</strong></li>
+        <li><strong>Elettra Lo Gatto</strong></li>
+        <li><strong>Daniele Zottolo</strong></li>
+      </ul>
+
+      <p>Abbiamo deciso di suddividerci le sezioni del menù:</p>
+      <ul>
+        <li><strong>Daniele</strong> → parte delle pizze </li>
+        <li><strong>Elettra</strong> → parte delle bibite </li>
+        <li><strong>Carmine</strong> → parte dei dolci </li>
+      </ul>
+
+      <p>Ognuno ha lavorato su una copia del file <strong>HTML principale</strong>, utilizzando Git per salvare le modifiche. Una volta completata la propria parte, ciascuno di noi ha <strong>caricato le modifiche su GitHub</strong>. GitHub ci ha permesso di <strong>unire facilmente il lavoro di tutti</strong> in un unico progetto, evitando errori e confusione.</p>
+
+      <p>Con il passare dei giorni il progetto ha preso forma e siamo riusciti a completarlo con successo, aggiungendo anche dettagli estetici e miglioramenti grazie al tempo extra rimasto prima della scadenza.</p>
+    </section>
+
+    <hr />
+
+    <section id="page-6" aria-label="Cos’è HTML">
+      <h2>Cos’è HTML</h2>
+      <p><strong>HTML</strong> significa <em>HyperText Markup Language</em>, cioè <strong>Linguaggio di marcatura per ipertesti</strong>. È il <strong>linguaggio base del web</strong>, utilizzato per costruire la struttura di qualsiasi pagina internet. Serve a indicare al browser <em>come deve essere organizzato e visualizzato</em> il contenuto (testo, immagini, link, video, ecc.).</p>
+    </section>
+
+    <hr />
+
+    <section id="page-7" aria-label="Come funziona HTML">
+      <h2> Come funziona HTML</h2>
+      <p>HTML non è un linguaggio di programmazione come Python o JavaScript, ma un <strong>linguaggio di struttura</strong>. Serve per <strong>organizzare i contenuti</strong> di una pagina attraverso l’uso dei <strong>tag</strong>, cioè parole chiave racchiuse tra parentesi angolari <code>&lt; &gt;</code>.</p>
+      <p>Ogni elemento HTML è composto da:</p>
+      <ul>
+        <li>Un <strong>tag di apertura</strong> → <code>&lt;tag&gt;</code></li>
+        <li>Un <strong>tag di chiusura</strong> → <code>&lt;/tag&gt;</code></li>
+        <li>Tra questi due tag c’è il <strong>contenuto</strong>.</li>
+      </ul>
+      <p>Ecco alcuni dei principali tag HTML:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Funzione</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>&lt;html&gt;</td><td>Apre la pagina HTML</td></tr>
+          <tr><td>&lt;head&gt;</td><td>Contiene informazioni invisibili come titolo e stili</td></tr>
+          <tr><td>&lt;body&gt;</td><td>Contiene il contenuto visibile</td></tr>
+          <tr><td>&lt;h1&gt;</td><td>Titolo principale</td></tr>
+          <tr><td>&lt;p&gt;</td><td>Paragrafo di testo</td></tr>
+          <tr><td>&lt;img&gt;</td><td>Inserisce un’immagine</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr />
+
+    <section id="page-8" aria-label="Come si visualizza una pagina HTML">
+      <h2>Come si visualizza una pagina HTML</h2>
+      <p>Per creare e visualizzare una pagina HTML servono solo pochi passaggi:</p>
+      <ol>
+        <li><strong>Apri un editor di testo</strong>, come <em>Blocco Note</em>, <em>Visual Studio Code</em> o <em>Notepad++</em>.</li>
+        <li><strong>Scrivi il codice HTML</strong>, ad esempio:</li>
+      </ol>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;La mia prima pagina&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Benvenuti alla Pizzeria del Team!&lt;/h1&gt;
+    &lt;p&gt;Questo è il nostro menù digitale realizzato con HTML e GitHub.&lt;/p&gt;
+    &lt;img src="pizza.jpg" alt="Una pizza gustosa"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      <p>Salva il file con estensione <code>.html</code> (es. <code>menu.html</code>).</p>
+      <p>Aprilo con un browser (Chrome, Edge, Firefox, Safari...).</p>
+      <p>Il browser leggerà il codice e mostrerà la pagina formattata e leggibile, senza mostrare i tag. In questo modo, da un semplice file di testo nasce una pagina web vera e propria.</p>
+      <p>Puoi poi arricchirla con CSS (per i colori, font e stili grafici) e JavaScript (per l’interattività).</p>
+    </section>
+
+    <hr />
+
+    <section id="page-9" aria-label="Conclusione">
+      <h2>Conclusione</h2>
+      <p>L’esperienza con GitHub e HTML ci ha permesso di lavorare in modo collaborativo e professionale, come avviene nei veri progetti di sviluppo web. Abbiamo imparato non solo a scrivere codice, ma anche a gestire un progetto condiviso, comunicare, organizzare i compiti e utilizzare strumenti moderni del mondo informatico.</p>
+      <p>È stato un lavoro di squadra che ci ha fatto comprendere l’importanza della collaborazione digitale, del versionamento del codice e della cura dei dettagli per ottenere un risultato finale completo e di qualità.</p>
+    </section>
+
+    <div class="nav-buttons" role="navigation" aria-label="Navigazione tra le pagine">
+      <button id="prevBtn" aria-label="Pagina precedente" disabled>← Precedente</button>
+      <button id="nextBtn" aria-label="Pagina successiva">Successiva →</button>
+    </div>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentPage = 0;
+
+    function showPage(index) {
+      sections.forEach((section, i) => {
+        section.classList.toggle('active', i === index);
+      });
+      currentPage = index;
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === sections.length - 1;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        showPage(currentPage - 1);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < sections.length - 1) {
+        showPage(currentPage + 1);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' && currentPage > 0) {
+        showPage(currentPage - 1);
+      } else if (e.key === 'ArrowRight' && currentPage < sections.length - 1) {
+        showPage(currentPage + 1);
+      }
+    });
+  </script>
+</body>
+</html>
