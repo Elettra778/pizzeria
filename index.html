@@ -58,11 +58,11 @@
 
       <!-- Nav (collegamenti che richiamano le sezioni) -->
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-  <a href="#" data-action="home" class="hover:underline hover:scale-110 transition-transform duration-300 ease-in-out">Home</a>
-  <a href="#" data-action="pizze" class="hover:underline hover:scale-110 transition-transform duration-300 ease-in-out">Menù Pizze</a>
-  <a href="#" data-action="dolci" class="hover:underline hover:scale-110 transition-transform duration-300 ease-in-out">Menù Dolci</a>
-  <a href="#" data-action="bevande" class="hover:underline hover:scale-110 transition-transform duration-300 ease-in-out">Menù Bevande</a>
-</nav>
+        <a href="#" data-action="home" class="hover:underline hover:scale-110 transition-transform duration-300 ease-in-out">Home</a>
+        <a href="#" data-action="pizze" class="hover:underline hover:scale-110 transition-transform duration-300 ease-in-out">Menù Pizze</a>
+        <a href="#" data-action="dolci" class="hover:underline hover:scale-110 transition-transform duration-300 ease-in-out">Menù Dolci</a>
+        <a href="#" data-action="bevande" class="hover:underline hover:scale-110 transition-transform duration-300 ease-in-out">Menù Bevande</a>
+      </nav>
 
       <!-- Mobile simple menu -->
       <div class="md:hidden">
@@ -80,388 +80,450 @@
   </div>
 </header>
 
-  <main class="pt-20"> <!-- spazio per header fisso -->
+<main class="pt-20"> <!-- spazio per header fisso -->
 
-    <section id="home" class="min-h-[80vh] flex flex-col items-center justify-center px-6">
-  <!-- Hero full-width con logo orizzontale dietro testo -->
-  <div class="relative w-full max-w-5xl rounded-lg overflow-hidden shadow-lg h-[60vh] md:h-[75vh] flex items-center justify-center bg-cream">
-    <!-- Logo orizzontale centrato, opacità bassa e sfocatura leggera -->
-    <img src="img/logo.png" alt="Logo Pizzeria" class="absolute inset-0 m-auto max-w-full max-h-full opacity-90 select-none pointer-events-none" style="filter: blur(1px);" />
+  <section id="home" class="min-h-[80vh] flex flex-col items-center justify-center px-6">
+    <!-- Hero full-width con logo orizzontale dietro testo -->
+    <div class="relative w-full max-w-5xl rounded-lg overflow-hidden shadow-lg h-[60vh] md:h-[75vh] flex items-center justify-center bg-cream">
+      <!-- Logo orizzontale centrato, opacità bassa e sfocatura leggera -->
+      <img src="img/logo.png" alt="Logo Pizzeria" class="absolute inset-0 m-auto max-w-full max-h-full opacity-90 select-none pointer-events-none" style="filter: blur(1px);" />
 
-    <!-- Overlay scuro per migliorare contrasto -->
-    <div class="absolute inset-0 bg-black bg-opacity-25"></div>
+      <!-- Overlay scuro per migliorare contrasto -->
+      <div class="absolute inset-0 bg-black bg-opacity-25"></div>
 
-    <!-- Testo principale, sopra il logo -->
-    <div class="relative z-10 px-6 py-12 text-center max-w-4xl">
-      <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">Benvenuti da Mangia qua, ca t’sciali</h1>
-      <p class="mt-4 text-base md:text-lg text-white/90 drop-shadow-md">Ricette autentiche, ingredienti freschi e atmosfera familiare. Scopri il nostro menù.</p>
+      <!-- Testo principale, sopra il logo -->
+      <div class="relative z-10 px-6 py-12 text-center max-w-4xl">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">Benvenuti da Mangia qua, ca t’sciali</h1>
+        <p class="mt-4 text-base md:text-lg text-white/90 drop-shadow-md">Ricette autentiche, ingredienti freschi e atmosfera familiare. Scopri il nostro menù.</p>
+      </div>
     </div>
+
+    <!-- Pulsanti centrali -->
+    <div class="mt-8 flex flex-col sm:flex-row items-center gap-4">
+      <button data-show="pizze" class="px-6 py-3 rounded-md bg-brick text-white font-semibold shadow hover:opacity-95 hover:scale-110 transition-transform duration-300 ease-in-out">Menù Pizze</button>
+      <button data-show="dolci" class="px-6 py-3 rounded-md bg-white border border-gray-200 text-dark font-semibold shadow hover:bg-gray-50 hover:scale-110 transition-transform duration-300 ease-in-out">Menù Dolci</button>
+      <button data-show="bevande" class="px-6 py-3 rounded-md bg-white border border-gray-200 text-dark font-semibold shadow hover:bg-gray-50 hover:scale-110 transition-transform duration-300 ease-in-out">Menù Bevande</button>
+      <button onclick="window.location.href='relazione.html'" class="px-6 py-3 rounded-md bg-white border border-gray-200 text-dark font-semibold shadow hover:bg-gray-50 hover:scale-110 transition-transform duration-300 ease-in-out">Apri relazione</button>
+    </div>
+  </section>
+
+  <!-- SEZIONE: MENÙ PIZZE (sviluppatore Zottolo) -->
+  <section id="pizze" class="section-panel hidden max-w-7xl mx-auto px-6 md:px-8 py-12">
+    <!-- Intestazione sezione con bottone torna home -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold">Menù Pizze <span class="text-sm text-gray-500"> (sviluppatore Zottolo)</span></h2>
+        <p class="mt-2 text-sm text-gray-600">Selezione delle nostre pizze classiche, preparate con ingredienti di qualità.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button data-action="home" class="px-4 py-2 rounded-md bg-white border border-gray-200 text-dark font-medium shadow hover:bg-gray-50">Torna alla Home</button>
+      </div>
+    </div>
+
+    <!-- Griglia pizze -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- Card: Margherita -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/margherita1.jpg" alt="Pizza Margherita">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Margherita</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€8.50</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Pomodoro San Marzano, mozzarella fior di latte, basilico fresco e olio extra vergine d'oliva.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Vegetariana</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Forno a legna</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Diavola -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/diavola1.jpg" alt="Pizza Diavola">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Diavola</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€10.00</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Pomodoro, mozzarella, salame piccante, olive e un tocco di peperoncino per chi ama il piccante.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-red-50 text-red-700">Piccante</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Specialità</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Capricciosa -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/capricciosa1.jpg" alt="Pizza Capricciosa">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Capricciosa</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€11.00</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Pomodoro, mozzarella, prosciutto cotto, funghi, carciofi e olive — un classico ricco e saporito.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Tradizionale</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Forno a legna</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Primavera -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/primavera1.jpg" alt="Pizza Primavera">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Primavera</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€10.50</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Base bianca con mozzarella e verdure di stagione grigliate, con un filo d'olio al basilico.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-emerald-50 text-emerald-700">Leggera</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Vegetariana</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Nuove pizze aggiunte -->
+
+      <!-- Card: Quattro Formaggi -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/quattroformaggi1.jpg" alt="Pizza Quattro Formaggi">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Quattro Formaggi</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€11.50</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Mozzarella, gorgonzola, parmigiano e fontina per un gusto ricco e cremoso.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Cremosa</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Vegetariana</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Marinara -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/marinara1.webp" alt="Pizza Marinara">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Marinara</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€7.50</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Pomodoro, aglio, origano e olio extra vergine d'oliva, semplice e tradizionale.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-red-50 text-red-700">Senza formaggio</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Vegana</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Napoli -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/napoli1.jpg" alt="Pizza Napoli">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Napoli</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€10.50</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Pomodoro, mozzarella, acciughe, capperi e origano, un classico saporito.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-red-50 text-red-700">Saporita</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Specialità</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Vegetariana -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/vegetariana1.jpg" alt="Pizza Vegetariana">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Vegetariana</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€10.00</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Mozzarella, melanzane, zucchine, peperoni e funghi freschi.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-emerald-50 text-emerald-700">Leggera</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Vegetariana</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SEZIONE: MENÙ DOLCI (sviluppatore Conte) -->
+  <section id="dolci" class="section-panel hidden max-w-7xl mx-auto px-6 md:px-8 py-12 pt-24">
+    <!-- Intestazione sezione con bottone torna home -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold">Menù Dolci <span class="text-sm text-gray-500"> (sviluppatore Conte)</span></h2>
+        <p class="mt-2 text-sm text-gray-600">Scopri la nostra selezione di dolci artigianali preparati con ingredienti genuini.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button data-action="home" class="px-4 py-2 rounded-md bg-white border border-gray-200 text-dark font-medium shadow hover:bg-gray-50">Torna alla Home</button>
+      </div>
+    </div>
+
+    <!-- Griglia dolci -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+      <!-- Card: Tiramisù -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/tiramisu.jpeg.jpeg" alt="Tiramisù">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Tiramisù</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Classico tiramisù della casa con savoiardi, mascarpone e cacao amaro.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Classico</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Fatto in casa</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Cheesecake -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/cheesecake.jpeg" alt="Cheesecake ai frutti di bosco">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Cheesecake ai Frutti di Bosco</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€6.00</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Cheesecake cremosa con salsa ai frutti di bosco fatti in casa.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-red-50 text-red-700">Fresca</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Senza cottura</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Profiteroles -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/Profiteroles.jpeg" alt="Profiteroles">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Profiteroles</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.50</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Bignè ripieni di crema chantilly ricoperti da golosa glassa al cioccolato.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Goloso</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Tradizionale</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Panna Cotta -->
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/panna.jpeg" alt="Panna Cotta">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Panna Cotta</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Panna cotta vellutata servita con salsa al caramello o ai frutti rossi.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-xs px-2 py-1 rounded bg-emerald-50 text-emerald-700">Leggera</span>
+            <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Senza glutine</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SEZIONE: MENÙ BEVANDE (sviluppatore Lo Gatto) -->
+  <section id="bevande" class="section-panel hidden max-w-7xl mx-auto px-6 md:px-8 py-12 pt-24">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold">Menù Bevande <span class="text-sm text-gray-500"> (sviluppatore Lo Gatto)</span></h2>
+        <p class="mt-2 text-sm text-gray-600">Bevande fresche e dissetanti per accompagnare le tue pizze.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button data-action="home" class="px-4 py-2 rounded-md bg-white border border-gray-200 text-dark font-medium shadow hover:bg-gray-50">Torna alla Home</button>
+      </div>
+    </div>
+
+    <!-- Griglia bevande -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/acqua.jpg" alt="Acqua Naturale">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Acqua naturale</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€2.50</div>
+          </div>
+          <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">1l</span>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/acquafriz.jpg" alt="Acqua frizzante">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Acqua frizzante</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€2.50</div>
+          </div>
+          <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">1l</span>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/coca.grande.jpeg" alt="Coca-Cola">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Coca-Cola</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00</div>
+          </div>
+          <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">1l</span>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/coca.jpg" alt="Coca-Cola">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Coca-Cola</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€3.00</div>
+          </div>
+          <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">33cl</span>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/cocazero.png" alt="Coca-Cola zero">
+        <div class="p-5">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Coca-Cola zero</h3>
+            <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€3.00</div>
+          </div>
+          <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">33cl</span>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/spina.jpeg" alt="Birra alla spina">
+        <div class="p-5">
+          <div class="flex items-start gap-3 flex-wrap">
+            <h3 class="text-lg font-semibold flex-grow">Birra alla spina</h3>
+            <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€4.00 (30cl)</div>
+            <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00 (50cl)</div>
+            <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€8.00 (1l)</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/heineken.png" alt="Heineken">
+        <div class="p-5">
+          <div class="flex items-start gap-3 flex-wrap">
+            <h3 class="text-lg font-semibold flex-grow">Heineken</h3>
+            <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€3.00 (33cl)</div>
+            <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00 (66cl)</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
+        <img class="card-img" src="img/nastro.jpeg" alt="Nastro Azzurro">
+        <div class="p-5">
+          <div class="flex items-start gap-3 flex-wrap">
+            <h3 class="text-lg font-semibold flex-grow">Nastro Azzurro</h3>
+            <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€2.50 (33cl)</div>
+            <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€4.00 (66cl)</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer elegante -->
+<footer class="mt-12 bg-[#111] text-gray-100">
+  <div class="max-w-7xl mx-auto px-6 md:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-5">
+      <div class="w-12 h-12 rounded-full bg-brick flex items-center justify-center text-white font-bold transition-transform duration-300 ease-in-out hover:scale-150">
+        <img src="img/loghino.jpeg" alt="Logo piccolo" class="w-full h-full object-cover rounded-full" />
+      </div>
+      <div>
+        <div class="font-semibold">Pizzeria Mangia qua, ca t’sciali</div>
+        <div class="text-xs text-gray-300">Autentica cucina napoletana</div>
+      </div>
+    </div>
+
+    <div class="text-sm text-gray-300">Progetto didattico GitHub – Classe 5B, Gruppo Lo Gatto / Conte / Zottolo - Prof vi amiamo (:</div>
+
   </div>
+</footer>
 
-  <!-- Pulsanti centrali -->
-<div class="mt-8 flex flex-col sm:flex-row items-center gap-4">
-  <button data-show="pizze" class="px-6 py-3 rounded-md bg-brick text-white font-semibold shadow hover:opacity-95 hover:scale-110 transition-transform duration-300 ease-in-out">Menù Pizze</button>
-  <button data-show="dolci" class="px-6 py-3 rounded-md bg-white border border-gray-200 text-dark font-semibold shadow hover:bg-gray-50 hover:scale-110 transition-transform duration-300 ease-in-out">Menù Dolci</button>
-  <button data-show="bevande" class="px-6 py-3 rounded-md bg-white border border-gray-200 text-dark font-semibold shadow hover:bg-gray-50 hover:scale-110 transition-transform duration-300 ease-in-out">Menù Bevande</button>
-  <button onclick="window.location.href='relazione.html'" class="px-6 py-3 rounded-md bg-white border border-gray-200 text-dark font-semibold shadow hover:bg-gray-50 hover:scale-110 transition-transform duration-300 ease-in-out">Apri relazione</button>
-  
-</div>
-</section>
-    <!-- SEZIONE: MENÙ PIZZE (sviluppatore Zottolo) -->
-    <section id="pizze" class="section-panel hidden max-w-7xl mx-auto px-6 md:px-8 py-12">
-      <!-- Intestazione sezione con bottone torna home -->
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-bold">Menù Pizze <span class="text-sm text-gray-500"> (sviluppatore Zottolo)</span></h2>
-          <p class="mt-2 text-sm text-gray-600">Selezione delle nostre pizze classiche, preparate con ingredienti di qualità.</p>
-        </div>
-        <div class="flex items-center gap-3">
-          <button data-action="home" class="px-4 py-2 rounded-md bg-white border border-gray-200 text-dark font-medium shadow hover:bg-gray-50">Torna alla Home</button>
-        </div>
-      </div>
+<!-- JavaScript minimo per mostrare/nascondere le sezioni -->
+<script>
+  (function () {
+    const home = document.getElementById('home');
+    const panels = Array.from(document.querySelectorAll('.section-panel'));
+    const panelMap = {
+      pizze: document.getElementById('pizze'),
+      dolci: document.getElementById('dolci'),
+      bevande: document.getElementById('bevande')
+    };
 
-      <!-- Griglia pizze -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <!-- Card: Margherita -->
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/margherita1.jpg" alt="Pizza Margherita">
-          <div class="p-5">
-            <div class="flex items-start justify-between">
-              <h3 class="text-lg font-semibold">Margherita</h3>
-              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€8.50</div>
-            </div>
-            <p class="mt-3 text-sm text-gray-600">Pomodoro San Marzano, mozzarella fior di latte, basilico fresco e olio extra vergine d'oliva.</p>
-            <div class="mt-4 flex items-center gap-3">
-              <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Vegetariana</span>
-              <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Forno a legna</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card: Diavola -->
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/diavola1.jpg" alt="Pizza Diavola">
-          <div class="p-5">
-            <div class="flex items-start justify-between">
-              <h3 class="text-lg font-semibold">Diavola</h3>
-              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€10.00</div>
-            </div>
-            <p class="mt-3 text-sm text-gray-600">Pomodoro, mozzarella, salame piccante, olive e un tocco di peperoncino per chi ama il piccante.</p>
-            <div class="mt-4 flex items-center gap-3">
-              <span class="text-xs px-2 py-1 rounded bg-red-50 text-red-700">Piccante</span>
-              <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Specialità</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card: Capricciosa -->
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/capricciosa1.jpg" alt="Pizza Capricciosa">
-          <div class="p-5">
-            <div class="flex items-start justify-between">
-              <h3 class="text-lg font-semibold">Capricciosa</h3>
-              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€11.00</div>
-            </div>
-            <p class="mt-3 text-sm text-gray-600">Pomodoro, mozzarella, prosciutto cotto, funghi, carciofi e olive — un classico ricco e saporito.</p>
-            <div class="mt-4 flex items-center gap-3">
-              <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Tradizionale</span>
-              <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Forno a legna</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card: Primavera -->
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/primavera1.jpg" alt="Pizza Primavera">
-          <div class="p-5">
-            <div class="flex items-start justify-between">
-              <h3 class="text-lg font-semibold">Primavera</h3>
-              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€10.50</div>
-            </div>
-            <p class="mt-3 text-sm text-gray-600">Base bianca con mozzarella e verdure di stagione grigliate, con un filo d'olio al basilico.</p>
-            <div class="mt-4 flex items-center gap-3">
-              <span class="text-xs px-2 py-1 rounded bg-emerald-50 text-emerald-700">Leggera</span>
-              <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Vegetariana</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-   
-    <section id="dolci" class="section-panel hidden max-w-7xl mx-auto px-6 md:px-8 py-12">
-  <!-- Intestazione sezione con bottone torna home -->
-  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-    <div>
-      <h2 class="text-2xl md:text-3xl font-bold">Menù Dolci <span class="text-sm text-gray-500"> (sviluppatore Conte)</span></h2>
-      <p class="mt-2 text-sm text-gray-600">Scopri la nostra selezione di dolci artigianali preparati con ingredienti genuini.</p>
-    </div>
-    <div class="flex items-center gap-3">
-      <button data-action="home" class="px-4 py-2 rounded-md bg-white border border-gray-200 text-dark font-medium shadow hover:bg-gray-50">Torna alla Home</button>
-    </div>
-  </div>
-
-  <!-- Griglia dolci -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-    <!-- Card: Tiramisù -->
-    <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-      <img class="card-img" src="img/tiramisu.jpeg.jpeg" alt="Tiramisù">
-      <div class="p-5">
-        <div class="flex items-start justify-between">
-          <h3 class="text-lg font-semibold">Tiramisù</h3>
-          <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00</div>
-        </div>
-        <p class="mt-3 text-sm text-gray-600">Classico tiramisù della casa con savoiardi, mascarpone e cacao amaro.</p>
-        <div class="mt-4 flex items-center gap-3">
-          <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Classico</span>
-          <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Fatto in casa</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Card: Cheesecake -->
-    <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-      <img class="card-img" src="img/cheesecake.jpeg" alt="Cheesecake ai frutti di bosco">
-      <div class="p-5">
-        <div class="flex items-start justify-between">
-          <h3 class="text-lg font-semibold">Cheesecake ai Frutti di Bosco</h3>
-          <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€6.00</div>
-        </div>
-        <p class="mt-3 text-sm text-gray-600">Cheesecake cremosa con salsa ai frutti di bosco fatti in casa.</p>
-        <div class="mt-4 flex items-center gap-3">
-          <span class="text-xs px-2 py-1 rounded bg-red-50 text-red-700">Fresca</span>
-          <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Senza cottura</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Card: Profiteroles -->
-    <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-      <img class="card-img" src="img/Profiteroles.jpeg" alt="Profiteroles">
-      <div class="p-5">
-        <div class="flex items-start justify-between">
-          <h3 class="text-lg font-semibold">Profiteroles</h3>
-          <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.50</div>
-        </div>
-        <p class="mt-3 text-sm text-gray-600">Bignè ripieni di crema chantilly ricoperti da golosa glassa al cioccolato.</p>
-        <div class="mt-4 flex items-center gap-3">
-          <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">Goloso</span>
-          <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Tradizionale</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Card: Panna Cotta -->
-    <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-      <img class="card-img" src="img/panna.jpeg" alt="Panna Cotta">
-      <div class="p-5">
-        <div class="flex items-start justify-between">
-          <h3 class="text-lg font-semibold">Panna Cotta</h3>
-          <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00</div>
-        </div>
-        <p class="mt-3 text-sm text-gray-600">Panna cotta vellutata servita con salsa al caramello o ai frutti rossi.</p>
-        <div class="mt-4 flex items-center gap-3">
-          <span class="text-xs px-2 py-1 rounded bg-emerald-50 text-emerald-700">Leggera</span>
-          <span class="text-xs px-2 py-1 rounded border border-gray-100 text-gray-700">Senza glutine</span>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-
-
-    <!-- SEZIONE: MENÙ BEVANDE (sviluppatore Lo Gatto) -->
-    <section id="bevande" class="section-panel hidden max-w-7xl mx-auto px-6 md:px-8 py-12">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-bold">Menù Bevande <span class="text-sm text-gray-500"> (sviluppatore Lo Gatto)</span></h2>
-          <p class="mt-2 text-sm text-gray-600">Bevande fresche e dissetanti per accompagnare le tue pizze.</p>
-        </div>
-        <div class="flex items-center gap-3">
-          <button data-action="home" class="px-4 py-2 rounded-md bg-white border border-gray-200 text-dark font-medium shadow hover:bg-gray-50">Torna alla Home</button>
-        </div>
-      </div>
-
-      <!-- Griglia bevande -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/acqua.jpg" alt="Acqua Naturale">
-          <div class="p-5">
-            <div class="flex items-start justify-between">
-              <h3 class="text-lg font-semibold">Acqua naturale</h3>
-              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€2.50</div>
-            </div>
-            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">1l</span>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/acquafriz.jpg" alt="Acqua frizzante">
-          <div class="p-5">
-            <div class="flex items-start justify-between">
-              <h3 class="text-lg font-semibold">Acqua frizzante</h3>
-              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€2.50</div>
-            </div>
-            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">1l</span>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/coca.grande.jpeg" alt="Coca-Cola">
-          <div class="p-5">
-            <div class="flex items-start justify-between">
-              <h3 class="text-lg font-semibold">Coca-Cola</h3>
-              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00</div>
-            </div>
-            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">1l</span>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/coca.jpg" alt="Coca-Cola">
-          <div class="p-5">
-            <div class="flex items-start justify-between">
-              <h3 class="text-lg font-semibold">Coca-Cola</h3>
-              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€3.00</div>
-            </div>
-            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">33cl</span>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/cocazero.png" alt="Coca-Cola zero">
-          <div class="p-5">
-            <div class="flex items-start justify-between">
-              <h3 class="text-lg font-semibold">Coca-Cola zero</h3>
-              <div class="ml-3 px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€3.00</div>
-            </div>
-            <span class="text-xs px-2 py-1 rounded bg-amber-100 text-amber-800">33cl</span>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/spina.jpeg" alt="Birra alla spina">
-          <div class="p-5">
-            <div class="flex items-start gap-3 flex-wrap">
-              <h3 class="text-lg font-semibold flex-grow">Birra alla spina</h3>
-              <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€4.00 (30cl)</div>
-              <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00 (50cl)</div>
-              <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€8.00 (1l)</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/heineken.png" alt="Heineken">
-          <div class="p-5">
-            <div class="flex items-start gap-3 flex-wrap">
-              <h3 class="text-lg font-semibold flex-grow">Heineken</h3>
-              <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€3.00 (33cl)</div>
-              <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€5.00 (66cl)</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition overflow-hidden">
-          <img class="card-img" src="img/nastro.jpeg" alt="Nastro Azzurro">
-          <div class="p-5">
-            <div class="flex items-start gap-3 flex-wrap">
-              <h3 class="text-lg font-semibold flex-grow">Nastro Azzurro</h3>
-              <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€2.50 (33cl)</div>
-              <div class="px-3 py-1 rounded-full text-sm font-semibold text-white bg-brick">€4.00 (66cl)</div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer elegante -->
-  <footer class="mt-12 bg-[#111] text-gray-100">
-    <div class="max-w-7xl mx-auto px-6 md:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-5">
-        <div class="w-12 h-12 rounded-full bg-brick flex items-center justify-center text-white font-bold transition-transform duration-300 ease-in-out hover:scale-150">
-          <img src="img/loghino.jpeg" alt="Logo piccolo" class="w-full h-full object-cover rounded-full" />
-        </div>
-        <div>
-          <div class="font-semibold">Pizzeria Mangia qua, ca t’sciali</div>
-          <div class="text-xs text-gray-300">Autentica cucina napoletana</div>
-        </div>
-      </div>
-
-      <div class="text-sm text-gray-300">Progetto didattico GitHub – Classe 5B, Gruppo Lo Gatto / Conte / Zottolo - Prof vi amiamo (:</div>
-
-    </div>
-  </footer>
-
-  <!-- JavaScript minimo per mostrare/nascondere le sezioni -->
-  <script>
-    /* 
-      Script: gestione visualizzazione sezioni.
-      - Bottoni con attributo data-show="sezioneId" mostrano la sezione corrispondente.
-      - Elementi con data-action="home" riportano alla home.
-      - Aggiunge/ rimuove la classe 'hidden' e imposta aria-hidden per accessibilità.
-    */
-
-    (function () {
-      const home = document.getElementById('home');
-      const panels = Array.from(document.querySelectorAll('.section-panel'));
-      const panelMap = {
-        pizze: document.getElementById('pizze'),
-        dolci: document.getElementById('dolci'),
-        bevande: document.getElementById('bevande')
-      };
-
-      // Mostra la home: nasconde tutte le panel
-      function showHome() {
-        home.classList.remove('hidden');
-        home.setAttribute('aria-hidden', 'false');
-        panels.forEach(p => { p.classList.add('hidden'); p.setAttribute('aria-hidden', 'true'); });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-
-      // Mostra una sezione specifica, nasconde la home e le altre sezioni
-      function showPanel(id) {
-        if (!panelMap[id]) return;
-        home.classList.add('hidden');
-        home.setAttribute('aria-hidden', 'true');
-        panels.forEach(p => { p.classList.add('hidden'); p.setAttribute('aria-hidden', 'true'); });
-        const target = panelMap[id];
-        target.classList.remove('hidden');
-        target.setAttribute('aria-hidden', 'false');
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      // Event listeners per i pulsanti centrali (data-show)
-      document.querySelectorAll('[data-show]').forEach(btn => {
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-          const id = this.getAttribute('data-show');
-          showPanel(id);
-        });
-      });
-
-      // Event listeners per azioni (es. nav e bottoni "Torna alla Home")
-      document.querySelectorAll('[data-action]').forEach(el => {
-        el.addEventListener('click', function (e) {
-          e.preventDefault();
-          const action = this.getAttribute('data-action');
-          if (action === 'home') showHome();
-          else if (action in panelMap) showPanel(action);
-        });
-      });
-
-      // Rendiamo le sezioni aria-hidden inizialmente coerenti
+    function showHome() {
+      home.classList.remove('hidden');
       home.setAttribute('aria-hidden', 'false');
-      panels.forEach(p => p.setAttribute('aria-hidden', 'true'));
-    })();
-  </script>
+      panels.forEach(p => {
+        p.classList.add('hidden');
+        p.setAttribute('aria-hidden', 'true');
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-  <noscript>
-    <div class="fixed bottom-4 right-4 bg-yellow-50 text-yellow-900 text-sm px-3 py-2 rounded shadow">JavaScript richiesto per la navigazione interna (mostra/nascondi sezioni).</div>
-  </noscript>
+    function showPanel(id) {
+      if (!panelMap[id]) return;
+      home.classList.add('hidden');
+      home.setAttribute('aria-hidden', 'true');
+      panels.forEach(p => {
+        p.classList.add('hidden');
+        p.setAttribute('aria-hidden', 'true');
+      });
+      const target = panelMap[id];
+      target.classList.remove('hidden');
+      target.setAttribute('aria-hidden', 'false');
+      // Scroll manuale compensando header fisso (80px altezza)
+      const yOffset = -80;
+      const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-show]').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const id = this.getAttribute('data-show');
+        showPanel(id);
+      });
+    });
+
+    document.querySelectorAll('[data-action]').forEach(el => {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        const action = this.getAttribute('data-action');
+        if (action === 'home') showHome();
+        else if (action in panelMap) showPanel(action);
+      });
+    });
+
+    home.setAttribute('aria-hidden', 'false');
+    panels.forEach(p => p.setAttribute('aria-hidden', 'true'));
+  })();
+</script>
+
+<noscript>
+  <div class="fixed bottom-4 right-4 bg-yellow-50 text-yellow-900 text-sm px-3 py-2 rounded shadow">JavaScript richiesto per la navigazione interna (mostra/nascondi sezioni).</div>
+</noscript>
 
 </body>
 </html>
